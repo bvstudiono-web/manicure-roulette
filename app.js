@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
- 
-
   const startBtn = document.getElementById("startBtn");
   const restartBtn = document.getElementById("restartBtn");
   const resultBox = document.getElementById("result");
@@ -35,17 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
     resultBox.innerHTML = html;
 
     restartBtn.classList.remove("hidden");
-    startBtn.classList.remove("hidden");
   }
 
-  startBtn.addEventListener("click", () => {
+  startBtn.onclick = () => {
     startBtn.classList.add("hidden");
     restartBtn.classList.add("hidden");
     playGame();
-  });
+  };
 
-  restartBtn.addEventListener("click", () => {
+  restartBtn.onclick = () => {
     resultBox.classList.add("hidden");
     startBtn.classList.remove("hidden");
-  });
+  };
 });
