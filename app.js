@@ -9,39 +9,33 @@ document.addEventListener("DOMContentLoaded", () => {
     { title: "Design", values: ["Uten design", "Enkel design", "Med design"] },
     { title: "Farge", values: ["Lyse farger", "Mørke farger"] },
     { title: "Finish", values: ["Glossy", "Matt"] },
-    { title: "Bonus", values: ["Én accent-negl", "Litt glitter", "French twist", "Ingen bonus"] }
+    { title: "Bonus", values: ["Ingen bonus", "Litt glitter", "French twist"] }
   ];
 
   function pick(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  async function playGame() {
+  startBtn.addEventListener("click", async () => {
+    startBtn.classList.add("hidden");
     resultBox.classList.remove("hidden");
-    resultBox.innerHTML = "<h3>🎴 Trekker kort...</h3>";
+    resultBox.innerHTML = "<h3>🎲 Trekker kort...</h3>";
 
-    let html = "<h3>✨ Din manikyr</h3><ul>";
+    let output = "<h3>✨ Din manikyr</h3><ul>";
 
     for (const card of cards) {
-      await new Promise(r => setTimeout(r, 500));
-      html += <li><strong>${card.title}:</strong> ${pick(card.values)}</li>;
-      resultBox.innerHTML = html + "</ul>";
+      await new Promise(r => setTimeout(r, 400));
+      output += <li><strong>${card.title}:</strong> ${pick(card.values)}</li>;
+      resultBox.innerHTML = output + "</ul>";
     }
 
-    html += "</ul><p style='margin-top:16px;color:#c9c9c9'>Snakk med din negledesigner 💅</p>";
-    resultBox.innerHTML = html;
+    output += "</ul><p style='margin-top:16px;'>Snakk med din negledesigner 💅</p>";
+    resultBox.innerHTML = output;
 
     restartBtn.classList.remove("hidden");
-  }
+  });
 
-  startBtn.onclick = () => {
-    startBtn.classList.add("hidden");
-    restartBtn.classList.add("hidden");
-    playGame();
-  };
-
-  restartBtn.onclick = () => {
-    resultBox.classList.add("hidden");
-    startBtn.classList.remove("hidden");
-  };
+  restartBtn.addEventListener("click", () => {
+    location.reload();
+  });
 });
