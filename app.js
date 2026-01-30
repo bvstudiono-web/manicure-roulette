@@ -4,18 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const restartBtn = document.getElementById("restartBtn");
   const resultBox = document.getElementById("result");
 
-  if (!startBtn  !restartBtn  !resultBox) {
-    console.error("Buttons or result box not found");
-    return;
-  }
-
   const cards = [
     { title: "Lengde", values: ["Korte negler", "Lange negler"] },
-    { title: "Form", values: ["Firkantet", "Myk firkant", "Mandelform"] },
+    { title: "Form", values: ["Firkantet", "Myk firkant", "Mandel"] },
     { title: "Design", values: ["Uten design", "Enkel design", "Med design"] },
     { title: "Farge", values: ["Lyse farger", "Mørke farger"] },
     { title: "Finish", values: ["Glossy", "Matt"] },
-    { title: "Bonus", values: ["Ingen bonus", "Litt glitter", "French twist"] }
+    { title: "Bonus", values: ["Litt glitter", "French twist", "Ingen bonus"] }
   ];
 
   function pick(arr) {
@@ -24,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startBtn.onclick = async () => {
     startBtn.classList.add("hidden");
-    restartBtn.classList.add("hidden");
     resultBox.classList.remove("hidden");
 
     let output = "<h3>✨ Din manikyr</h3><ul>";
@@ -35,15 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
       resultBox.innerHTML = output + "</ul>";
     }
 
-    output += <p style="margin-top:16px;">Snakk med din negledesigner 💅</p>;
+    output += "</ul><p>Snakk med din negledesigner 💅</p>";
     resultBox.innerHTML = output;
+
     restartBtn.classList.remove("hidden");
   };
 
   restartBtn.onclick = () => {
     resultBox.classList.add("hidden");
-    startBtn.classList.remove("hidden");
     restartBtn.classList.add("hidden");
+    startBtn.classList.remove("hidden");
     resultBox.innerHTML = "";
   };
 
