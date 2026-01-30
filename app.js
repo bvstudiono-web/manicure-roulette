@@ -1,10 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Telegram init (не ламає браузер)
-  if (window.Telegram && window.Telegram.WebApp) {
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-    tg.expand();
-  }
+
+ 
 
   const startBtn = document.getElementById("startBtn");
   const restartBtn = document.getElementById("restartBtn");
